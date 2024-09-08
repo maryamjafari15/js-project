@@ -1,0 +1,86 @@
+* , *::after , *::before{
+    box-sizing: border-box;
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.header-banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 16px;
+    gap: 8px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    background: linear-gradient(97.53deg, rgb(246, 135, 179) 5.6%, rgb(123, 97, 255) 59.16%, rgb(22, 209, 161) 119.34%);
+}
+.navigation{
+    background-color: #fff;
+   z-index: 999;
+    position: sticky;
+    top: 0;
+    box-sizing: inherit;
+
+}
+.navigation-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    box-sizing: inherit;
+    width: 1127px;
+    margin: auto;
+}
+.menu-list{
+    padding: 13px 16px;
+    text-decoration: none;
+    line-height: 1;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .87);
+}
+.logo{
+    width: 80px;
+    cursor: pointer;
+    margin: 13px 16px;
+}
+.rightside-nav{
+    display: flex;
+    align-items: center;
+}
+footer{
+    background-image:linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)); 
+    padding: 3em;
+    font-size: 1rem;
+}
+.footer-cont{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+width: 1127px;
+margin: auto;
+}
+.footer-section{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    width: 25%;
+    padding: 14px;
+}
+.footer-section h1{
+    font-size: 1em;
+    margin-bottom: 14px;
+}
+.footer-section a , span{
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.5;
+    font-size: 14px;
+}
+.market{
+    padding: 3px;
+    opacity: 0.5;
+    width: 136px;
+}
+.listitem{
+    list-style: none;
+}
