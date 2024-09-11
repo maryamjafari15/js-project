@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
 }
+/* اطلاعات بنر سایت */
 .header-banner{
     display: flex;
     justify-content: center;
@@ -15,38 +16,63 @@
     font-size: 14px;
     background: linear-gradient(97.53deg, rgb(246, 135, 179) 5.6%, rgb(123, 97, 255) 59.16%, rgb(22, 209, 161) 119.34%);
 }
+/* اطلاعات navigation */
 .navigation{
+    display: flex;
     background-color: #fff;
    z-index: 999;
     position: sticky;
     top: 0;
-    box-sizing: inherit;
+    height: 60px;
+    box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
+    
 
 }
 .navigation-bar{
     display: flex;
     justify-content: space-between;
     align-items:center;
-    box-sizing: inherit;
     width: 1127px;
     margin: auto;
+    
 }
-.menu-list{
-    padding: 13px 16px;
+
+.rightside-nav , .leftside-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+ .leftside-nav div , .rightside-nav div{
+    align-content: center;
+  height: 60px;  
+  padding: 13px 16px;
+
+}
+.leftside-nav div:hover , .rightside-nav div:hover{
+    background-color: rgba(0, 0, 0, .03);
+}
+
+.menu-list {
+    align-items: center;
+    width: 10px;  
     text-decoration: none;
     line-height: 1;
     font-weight: 400;
+    font-size: 1rem;
     color: rgba(0, 0, 0, .87);
+}
+.logo-cont:hover{
+    background-color: rgba(0, 0, 0, .03);
 }
 .logo{
     width: 80px;
     cursor: pointer;
     margin: 13px 16px;
 }
-.rightside-nav{
-    display: flex;
-    align-items: center;
-}
+/* اطلاعات footer */
+
 footer{
     background-image:linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)); 
     padding: 3em;
@@ -64,7 +90,7 @@ margin: auto;
     flex-direction: column;
     color: #fff;
     width: 25%;
-    padding: 14px;
+    /* padding: 14px; */
 }
 .footer-section h1{
     font-size: 1em;
@@ -75,16 +101,26 @@ margin: auto;
     color: inherit;
     opacity: 0.5;
     font-size: 14px;
+    padding: 3px 0px;
+}
+.footer-section a:hover{
+    opacity: 1;
+}
+.logo-footer:hover{
+    opacity: 1!important;
+    cursor: pointer!important;
 }
 .market{
+    cursor: pointer;
     padding: 3px;
     opacity: 0.5;
     width: 136px;
 }
-.assetslist{
-    width: 1127px;
-    margin: auto;
+
+.market:hover{
+    opacity: 1;
 }
+/* اطلاعات کلیات اطلاعات */
 
 .mainsection1{
     
@@ -97,50 +133,85 @@ margin: auto;
     align-items: start;
     justify-content: space-between;
     width: 1127px;
+    padding-left: 50px;
+    padding-right: 50px;
     margin: auto;
 
 }
 .base-info{
-    padding: 14px;
     text-align: center;
 }
 .label{
-    font-size: 1em;
+    font-size: 0.9em;
     font-weight: 700;
     color: #fff;
 }
 .number-baseinfo{
     color: #fff;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 400;
 }
 
 
-.listitem{
-    list-style: none;
-}
-.container-table{
+/* اطلاعات جدول اصلی */
+
+.assetsList{
     width: 1127px;
+    margin: auto;
+}
+
+.container-table{
+    width: 100%;
     margin: auto;
     margin-top: -8em;
     padding: 2px;
 }
+
 .assetstable{
     background-color: #fff;
     width: 100%;
     border-radius: 0.3rem;
-    padding: 4px;
+    padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 15px -3px;
     margin-bottom: 100px;
+    /* border-spacing: 0;
+    border-collapse: separate; */
 }
-.theadtr , .tbodytr{
+
+.theadassetstable{
+    display: table-header-group;
+    vertical-align: middle;
+    font-size: 0.9em;
+    line-height:1.5em;
+}
+
+.theadtr {
     display: table-row;
     width: 100%;
-    text-align: center;
     cursor: pointer;
-    border: 1px solid black;
-    padding: 2px;
 }
+
+.theadtd {
+  color: black;
+}
+
 .tbodyClass{
-cursor: pointer;
+    display: table-row-group;
+    cursor: pointer;
+}
+.tbodytr{
+    color: black;
+}
+.Tbodytd1{
+    display: flex;
+    align-items: center;
+    color: black; 
+}
+.tdimg{
+    margin-right: .5em;
+    width: 30px;
+    height: 30px;
+}
+.tbodyname2{
+    align-items: center;
 }
