@@ -72,7 +72,7 @@ function renderBaseInfo(infoItem){
 
 //بخش جدول را ایجاد میکنیم//
 let title = [
-  "Rank" , "Name" , "Price" , "Market Cap" , "VWAP(24Hr)" , "Supply", "Volume(24Hr)" , "Change (24Hr)"
+  "Rank" , "Name" , "Price" , "Market Cap" , "VWAP(24Hr)" , "Supply", "Volume(24Hr)" , "Change(24Hr)"
 ]
 function renderAssetsList (){ 
     let assetsList = document.querySelector(".assetsList");
@@ -89,14 +89,14 @@ function renderAssetsList (){
     theadTable.classList.add ("theadassetstable");
     assetsTable.appendChild(theadTable);
 
-    let assetsTableTr = document.createElement("th");
+    let assetsTableTr = document.createElement("tr");
     assetsTableTr.classList.add("theadtr");
     theadTable.appendChild(assetsTableTr);
 
   function renderTheadTd(assetsTitle){
 
-     let headTd = document.createElement("td");
-     headTd.classList.add("theadtd");
+     let headTd = document.createElement("th");
+     headTd.classList.add("theadth");
      assetsTableTr.appendChild(headTd);
      headTd.textContent= assetsTitle;
 }
@@ -112,9 +112,9 @@ function renderAssetsList (){
     tbodyTable.appendChild(assetsTbodyTableTr);
 
     let TbodyTdRank = document.createElement("td");
-    TbodyTdRank.classList.add("Tbodytd");
+    TbodyTdRank.classList.add("Tbodytd2");
     assetsTbodyTableTr.appendChild(TbodyTdRank);
-    TbodyTdRank.textContent=tdRank;
+    TbodyTdRank.textContent=tdRank + "  ";
 
     let TbodyTdName = document.createElement("td");
     TbodyTdName.classList.add("Tbodytd1");
@@ -180,7 +180,7 @@ function renderAssetsList (){
     let TbodyTdChange = document.createElement("td");
     TbodyTdChange .classList.add("Tbodytd");
     assetsTbodyTableTr.appendChild(TbodyTdChange );
-    TbodyTdChange .textContent= Number.parseFloat(tdChange).toFixed(2);
+    TbodyTdChange .textContent= (Number.parseFloat(tdChange).toFixed(2)) +"%";
   }
 
   
