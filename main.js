@@ -149,6 +149,17 @@ function renderAssetsList (){
       else{return num.toFixed(2)}
       
     }
+    function formatNumber2(num) {
+      if (num >= 1e12) {
+        return (num / 1e12).toFixed(2) + "t" ;}
+         else if (num >= 1e9) { return (num / 1e9).toFixed(2) + "b"; 
+       } else if (num >= 1e6) {
+         return (num / 1e6).toFixed(2) + "m";
+       } else if (num>= 1e3){
+        return(num / 1e3).toFixed(2) + "k";
+       }
+       else{return num.toFixed(2)}
+    }
 
     let TbodyTdPrice = document.createElement("td");
     TbodyTdPrice.classList.add("Tbodytd");
@@ -169,24 +180,29 @@ function renderAssetsList (){
     let TbodyTdSupply = document.createElement("td"); 
     TbodyTdSupply.classList.add("Tbodytd");
     assetsTbodyTableTr.appendChild(TbodyTdSupply);
-    TbodyTdSupply.textContent= formatNumber (Number.parseFloat(tdSupply));
+    TbodyTdSupply.textContent= formatNumber2 (Number.parseFloat(tdSupply));
 
     let TbodyTdVolume = document.createElement("td");
     TbodyTdVolume.classList.add("Tbodytd");
     assetsTbodyTableTr.appendChild(TbodyTdVolume);
-    TbodyTdVolume.textContent="$"+ formatNumber (Number.parseFloat(tdVolume));
+    TbodyTdVolume.textContent="$"+ formatNumber2 (Number.parseFloat(tdVolume));
 
 
     let TbodyTdChange = document.createElement("td");
-    TbodyTdChange .classList.add("Tbodytd");
+    
     assetsTbodyTableTr.appendChild(TbodyTdChange );
+    if (tdChange<0){
+      TbodyTdChange .classList.add("Tbodytd4");
+    }else {
+      TbodyTdChange .classList.add("Tbodytd5");
+    }
     TbodyTdChange .textContent= (Number.parseFloat(tdChange).toFixed(2)) +"%";
   }
 
   
-  async function renderTbodyTrTd(){
+  async function renderTbodyTrTd(list){
     let listofTrTd = await getAssetslist();
-  for (let i=0 ; i<listofTrTd.length ; i++){
+  for (let i=0 ; i<list ; i++){
     let itemofTrTd = listofTrTd[i];
     let lowercasedSymbol = (itemofTrTd.symbol).toLowerCase();
     let renderimg = "https://assets.coincap.io/assets/icons/"+ lowercasedSymbol+ "@2x.png";
@@ -195,14 +211,45 @@ function renderAssetsList (){
 
   
   };
-  renderTbodyTrTd();
+  renderTbodyTrTd(20);
 
- 
+  async function renderTbodyTrTdbh(){
+    let listofTrTd = await getAssetslist();
+  for (let i=20 ; i<listofTrTd.length ; i++){
+    let itemofTrTd = listofTrTd[i];
+    let lowercasedSymbol = (itemofTrTd.symbol).toLowerCase();
+    let renderimg = "https://assets.coincap.io/assets/icons/"+ lowercasedSymbol+ "@2x.png";
+     tableTrTd(itemofTrTd.rank ,itemofTrTd.symbol, renderimg , itemofTrTd.name , itemofTrTd.priceUsd , itemofTrTd.marketCapUsd ,itemofTrTd.vwap24Hr , itemofTrTd.supply , itemofTrTd.volumeUsd24Hr , itemofTrTd.changePercent24Hr);
+  }
+
   
+  };
+  // حالا بخش دکمه رو ایجاد میکنیم//
+
+  function renderbtn(){
+    let btncontainer = document.querySelector(".btn");
+    let creatBtn = document.createElement("button");
+    creatBtn.classList.add("btnclass");
+    creatBtn.textContent="View More";
+   btncontainer.appendChild(creatBtn);
+  creatBtn.addEventListener("click" , function () {
+    renderTbodyTrTdbh() ;
+    creatBtn.disabled=true;
+  
+  
+  });
+
+
+  }
+ 
+  renderbtn();
+
 }
 
 
 
-renderInfo();
+
 renderAssetsList();
+renderInfo();
+
 
