@@ -1,15 +1,17 @@
 //در مرحله اول باید اطلاعات رو از سرور بگیریم//
 
-let baseUrl = "https://api.coincap.io/v2";
-let assetsUrl = baseUrl + "/assets";
+ let currentOffset = 0 ;
 
 async function getAssetslist(){
+  let baseUrl = "https://api.coincap.io/v2";
+  let assetsUrl = baseUrl + "/assets?offset="+ currentOffset + "&limit=20";
     let response = await fetch(assetsUrl);
     let body = await response.json();
 
     return body.data;
 }
 
+getAssetslist();
 //برای نمایش اطلاعات در صفحه باید المنت های موردنیاز را ایجاد کنیم//
 
 let info =[
@@ -68,8 +70,8 @@ function renderBaseInfo(infoItem){
   baseInfo.appendChild(numberBaseInfo);
 }
  info.forEach(renderBaseInfo);
-}
-
+};
+renderInfo();
 //بخش جدول را ایجاد میکنیم//
 let title = [
   "Rank" , "Name" , "Price" , "Market Cap" , "VWAP(24Hr)" , "Supply", "Volume(24Hr)" , "Change(24Hr)"
@@ -212,18 +214,7 @@ function renderAssetsList (){
   
   };
   renderTbodyTrTd(20);
-
-  async function renderTbodyTrTdbh(){
-    let listofTrTd = await getAssetslist();
-  for (let i=20 ; i<listofTrTd.length ; i++){
-    let itemofTrTd = listofTrTd[i];
-    let lowercasedSymbol = (itemofTrTd.symbol).toLowerCase();
-    let renderimg = "https://assets.coincap.io/assets/icons/"+ lowercasedSymbol+ "@2x.png";
-     tableTrTd(itemofTrTd.rank ,itemofTrTd.symbol, renderimg , itemofTrTd.name , itemofTrTd.priceUsd , itemofTrTd.marketCapUsd ,itemofTrTd.vwap24Hr , itemofTrTd.supply , itemofTrTd.volumeUsd24Hr , itemofTrTd.changePercent24Hr);
-  }
-
   
-  };
   // حالا بخش دکمه رو ایجاد میکنیم//
 
   function renderbtn(){
@@ -233,9 +224,8 @@ function renderAssetsList (){
     creatBtn.textContent="View More";
    btncontainer.appendChild(creatBtn);
   creatBtn.addEventListener("click" , function () {
-    renderTbodyTrTdbh() ;
-    creatBtn.disabled=true;
-  
+    currentOffset += 20;
+    renderTbodyTrTd(20) ;
   
   });
 
@@ -247,9 +237,7 @@ function renderAssetsList (){
 }
 
 
-
-
 renderAssetsList();
-renderInfo();
+
 
 

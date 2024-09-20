@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
 }
-/* اطلاعات بنر سایت */
+/* banner*/
 .header-banner{
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
     font-size: 14px;
     background: linear-gradient(97.53deg, rgb(246, 135, 179) 5.6%, rgb(123, 97, 255) 59.16%, rgb(22, 209, 161) 119.34%);
 }
-/* اطلاعات navigation */
+/* navigation */
 .navigation{
     display: flex;
     background-color: #fff;
@@ -71,7 +71,7 @@
     cursor: pointer;
     margin: 13px 16px;
 }
-/* اطلاعات footer */
+/* footer */
 
 footer{
     background-image:linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)); 
@@ -90,7 +90,7 @@ margin: auto;
     flex-direction: column;
     color: #fff;
     width: 25%;
-    /* padding: 14px; */
+
 }
 .footer-section h1{
     font-size: 1em;
@@ -120,8 +120,11 @@ margin: auto;
 .market:hover{
     opacity: 1;
 }
-/* اطلاعات کلیات اطلاعات */
+/* main */
 
+body{
+    background-color: rgb(236, 239, 241);
+}
 .mainsection1{
     
     padding: 21px;
@@ -153,7 +156,7 @@ margin: auto;
 }
 
 
-/* اطلاعات جدول اصلی */
+/* main-table */
 
 .assetsList{
     width: 1127px;
@@ -167,7 +170,7 @@ margin: auto;
     padding: 2px;
 }
 
-.assetstable{
+.assetstable , .exchangestable{
     background-color: #fff;
     width: 100%;
     border-radius: 0.3rem;
@@ -177,7 +180,7 @@ margin: auto;
     border-collapse: separate;
 }
 
-.theadassetstable{
+.theadassetstable , .theadexchangestable{
     display: table-header-group;
     vertical-align: middle;
     line-height:1.5em;
