@@ -202,6 +202,7 @@ body{
   border-bottom: 1px solid rgba(34, 36, 38, .1);
 }
 
+
 .theadth:hover {
     color: rgba(0, 0, 0, 1);
 }
@@ -211,7 +212,7 @@ body{
     line-height:1.5em;
 }
 
-.tbodytr{
+.tbodytr , .tbodytr2{
     display: table-row;
     text-align: center;
     width: 100%;
@@ -219,9 +220,8 @@ body{
 }
 
 .Tbodytd , .Tbodytd4 , .Tbodytd5{
-    font-size: 1em;
+    font-size: .9em;
   padding: 8px 12px;
- 
     text-align: left;
     color: rgba(0, 0, 0, .87); 
     border-bottom: 1px solid rgba(34, 36, 38, .1);
@@ -235,16 +235,17 @@ body{
 }
 
 .Tbodytd1{
-    font-size: 1em;
+    font-size: .9em;
     padding: 8px 14px;
     display: flex;
     align-items: center;
     color: rgba(0, 0, 0, .87);
     border-bottom: 1px solid rgba(34, 36, 38, .1);
+   
 }
 
 .Tbodytd2{
-    font-size: 1em;
+    font-size: .9em;
     text-align:center ;
     color: rgba(0, 0, 0, .87);
     border-bottom: 1px solid rgba(34, 36, 38, .1);
@@ -261,6 +262,9 @@ body{
     justify-content: center;
     align-items: start;
     
+}
+.tbodyname2:hover{
+    text-decoration: underline;
 }
 .tbodyname2 p{
     height: 20px;
@@ -292,3 +296,49 @@ body{
  .btnclass:hover{
     transform: translateY(-2px);
  }
+ /* error */
+
+ .error{
+    padding: 16px;
+    text-align: center;
+    color: brown;
+    font-weight: 700;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(34, 36, 38, .1);
+ }
+ .loading{
+    padding: 16px;
+    text-align: center;
+    color: blue;
+    font-weight: 700;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(34, 36, 38, .1);
+ }
+
+ .redcircle {
+    
+    height: 13px;
+    width: 13px;
+    background-color: rgb(244, 67, 54);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 25px;
+  }
+  .greencircle{
+    
+    height: 13px;
+    width: 13px;
+    background-color: rgb(24, 198, 131);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left:25px;
+  }
+  .yellowcircle{
+    
+    height: 13px;
+    width: 13px;
+    background-color: rgb(255, 235, 59);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 25px;
+  }

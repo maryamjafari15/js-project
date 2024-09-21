@@ -110,7 +110,6 @@ let exchangesTbodyTableTr = document.createElement("tr");
     exchangesTbodyTableTr.appendChild(TbodyTdRank);
     TbodyTdRank.textContent= data.rank; 
 
-
     let TbodyTdName = document.createElement("td");
     TbodyTdName.classList.add("Tbodytd1");
     exchangesTbodyTableTr.appendChild(TbodyTdName);
@@ -124,25 +123,82 @@ let exchangesTbodyTableTr = document.createElement("tr");
     let TbodyTdtopPair = document.createElement("td");
     TbodyTdtopPair .classList.add("Tbodytd");
     exchangesTbodyTableTr.appendChild(TbodyTdtopPair );
-    TbodyTdtopPair .textContent=data.tradingPairs;
+    TbodyTdtopPair .textContent="USDT";
 
     let TbodyTdVolume = document.createElement("td");
     TbodyTdVolume.classList.add("Tbodytd");
     exchangesTbodyTableTr.appendChild(TbodyTdVolume );
-    TbodyTdVolume .textContent=data.volumeUsd;
-   
+   if ( data.volumeUsd < 1){
+    TbodyTdVolume .textContent ="-"
+   }else {
+    TbodyTdVolume .textContent= numeral(data.volumeUsd).format("($0.00a)");
+   }
    
     let TbodyTdTotal = document.createElement("td");
     TbodyTdTotal.classList.add("Tbodytd");
     exchangesTbodyTableTr.appendChild(TbodyTdTotal );
-    TbodyTdTotal .textContent=data.percentTotalVolume;
+
+    if(data.percentTotalVolume<0.00000001){
+      TbodyTdTotal.textContent= "-";
+    }else{ TbodyTdTotal .textContent= Number.parseFloat(data.percentTotalVolume).toFixed(2)+ "%";};
    
     
     let TbodyTdStatus= document.createElement("td");
-    TbodyTdStatus.classList.add("Tbodytd");
     exchangesTbodyTableTr.appendChild(TbodyTdStatus );
-    TbodyTdStatus .textContent=data.socket;
+    TbodyTdStatus.classList.add( "Tbodytd" );
+    TbodyTdStatus .textContent=" ";
 
+    let TbodyTdStatus2= document.createElement("div");
+    TbodyTdStatus.appendChild(TbodyTdStatus2);
+    TbodyTdStatus2.textContent=" ";
+
+    if (data.socket == true ){
+    TbodyTdStatus2.classList.add("greencircle");}
+    else if (data.socket == false){
+      TbodyTdStatus2.classList.add("redcircle");
+    } else{
+      TbodyTdStatus2.classList.add("yellowcircle");
+    };
+
+  }
+  
+  //error//
+
+  function renderError(msg){
+    let errorcontainer = document.createElement("tr");
+    errorcontainer.classList.add("tbodytr");
+    tbodyexchangesTable.appendChild(errorcontainer);
+ 
+
+    let tderror = document.createElement("td");
+    tderror.classList.add("error");
+    tderror.setAttribute("colspan","7"); 
+    tderror.textContent=msg;
+    errorcontainer.appendChild(tderror);
+
+
+  }
+
+  //loading//
+
+  function renderloading(){
+    let loadingcontainer = document.createElement("tr");
+    loadingcontainer.classList.add("tbodytr2");
+    tbodyexchangesTable.appendChild(loadingcontainer);
+ 
+
+    let tdloading = document.createElement("td");
+    tdloading.classList.add("loading");
+    tdloading.setAttribute("colspan","7"); 
+    tdloading.textContent= "loading...";
+    loadingcontainer.appendChild(tdloading);
+  }
+ 
+
+ 
+  function removeloading(){
+    let loadingEl = document.querySelector(".tbodytr2");
+    tbodyexchangesTable.removeChild(loadingEl);
   }
   
 
@@ -150,18 +206,49 @@ let exchangesTbodyTableTr = document.createElement("tr");
 
   async function getExchangeslist(){
     let baseUrl = "https://api.coincap.io/v2";
-    let exchangesUrl = baseUrl + "/exchanges";
+    let exchangesUrl = baseUrl + "/exchanges?offset=0&limit=120";
       let response = await fetch(exchangesUrl);
       let body = await response.json();
   
       return body.data;
   }
+
+  async function getMarketlist(){
+    let baseUrl = "https://api.coincap.io/v2";
+    let MarketssUrl = baseUrl + "/markets";
+      let response = await fetch(MarketssUrl);
+      let body = await response.json();
   
+      return body.data;
+  }
+  
+  //run //
   async function renderExchangeslist(){
     let list = await getExchangeslist();
-    
-    list.forEach( function(item){
+   let listsorted = list.sort((a, b) => a.rank - b.rank);
+    listsorted.forEach( function(item){
       tbodytrexchanges(item);
     })
+    
   }
-  renderExchangeslist();
+
+  
+
+
+  renderloading();
+  renderExchangeslist().catch(function (error){
+    renderError("There is a problem...");
+  }).finally( function(){
+    removeloading();
+  })
+
+  //BTN//
+
+  // function renderExchangesbtn(){
+  //   let btncontainer = document.querySelector(".btn");
+  //   let creatBtn = document.createElement("button");
+  //   creatBtn.classList.add("btnclass");
+  //   creatBtn.textContent="View More";
+  //  btncontainer.appendChild(creatBtn);
+  // }
+  

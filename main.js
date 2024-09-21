@@ -1,10 +1,11 @@
 //در مرحله اول باید اطلاعات رو از سرور بگیریم//
 
  let currentOffset = 0 ;
+ let limit = 20 ;
 
 async function getAssetslist(){
   let baseUrl = "https://api.coincap.io/v2";
-  let assetsUrl = baseUrl + "/assets?offset="+ currentOffset + "&limit=20";
+  let assetsUrl = baseUrl + "/assets?offset="+ currentOffset + "&limit=" + limit;
     let response = await fetch(assetsUrl);
     let body = await response.json();
 
@@ -101,8 +102,12 @@ function renderAssetsList (){
      headTd.classList.add("theadth");
      assetsTableTr.appendChild(headTd);
      headTd.textContent= assetsTitle;
+
+
 }
    title.forEach(renderTheadTd);
+    
+
 
    let tbodyTable = document.createElement("tbody");
    tbodyTable.classList.add ("tbodyClass");
@@ -166,7 +171,7 @@ function renderAssetsList (){
     let TbodyTdPrice = document.createElement("td");
     TbodyTdPrice.classList.add("Tbodytd");
     assetsTbodyTableTr.appendChild(TbodyTdPrice);
-    TbodyTdPrice.textContent="$"+ Number.parseFloat(tdPrice).toFixed(2);
+    TbodyTdPrice.textContent=numeral(tdPrice).format("($0,0.00)");
 
     let TbodyTdMarket = document.createElement("td");
     TbodyTdMarket.classList.add("Tbodytd");
@@ -177,7 +182,7 @@ function renderAssetsList (){
     let TbodyTdVWAP = document.createElement("td");
     TbodyTdVWAP.classList.add("Tbodytd");
     assetsTbodyTableTr.appendChild(TbodyTdVWAP);
-    TbodyTdVWAP.textContent="$"+ Number.parseFloat(tdVWAP).toFixed(2);
+    TbodyTdVWAP.textContent=numeral(tdVWAP).format("($0,0.00)");
 
     let TbodyTdSupply = document.createElement("td"); 
     TbodyTdSupply.classList.add("Tbodytd");
@@ -225,6 +230,7 @@ function renderAssetsList (){
    btncontainer.appendChild(creatBtn);
   creatBtn.addEventListener("click" , function () {
     currentOffset += 20;
+    limit=20;
     renderTbodyTrTd(20) ;
   
   });
