@@ -1,19 +1,5 @@
-//در مرحله اول باید اطلاعات رو از سرور بگیریم//
-
- let currentOffset = 0 ;
- let limit = 20 ;
-
-async function getAssetslist(){
-  let baseUrl = "https://api.coincap.io/v2";
-  let assetsUrl = baseUrl + "/assets?offset="+ currentOffset + "&limit=" + limit;
-    let response = await fetch(assetsUrl);
-    let body = await response.json();
-
-    return body.data;
-}
-
-getAssetslist();
-//برای نمایش اطلاعات در صفحه باید المنت های موردنیاز را ایجاد کنیم//
+// Dom//
+//part1//
 
 let info =[
    
@@ -43,9 +29,9 @@ let info =[
   } 
 ] 
 
+let section1 = document.querySelector(".section1");
 function renderInfo(){
-  let section1 = document.querySelector(".section1");
-
+ 
   let mainSection1 = document.createElement("div");
   mainSection1.classList.add("mainsection1");
   section1.appendChild(mainSection1)
@@ -73,177 +59,250 @@ function renderBaseInfo(infoItem){
  info.forEach(renderBaseInfo);
 };
 renderInfo();
-//بخش جدول را ایجاد میکنیم//
-let title = [
+
+ //part2//
+ let title = [
   "Rank" , "Name" , "Price" , "Market Cap" , "VWAP(24Hr)" , "Supply", "Volume(24Hr)" , "Change(24Hr)"
 ]
-function renderAssetsList (){ 
-    let assetsList = document.querySelector(".assetsList");
 
-    let assetsTableContainer = document.createElement("div");
-    assetsTableContainer.classList.add("container-table");
-    assetsList.appendChild(assetsTableContainer);
+let assetsList = document.querySelector(".assetsList");
 
-    let assetsTable = document.createElement("table");
-    assetsTable.classList.add("assetstable");
-    assetsTableContainer.appendChild(assetsTable);
+function renderTableassets(){
 
-    let theadTable = document.createElement("thead");
-    theadTable.classList.add ("theadassetstable");
-    assetsTable.appendChild(theadTable);
+  let assetsTableContainer = document.createElement("div");
+  assetsTableContainer.classList.add("container-table");
+  assetsList.appendChild(assetsTableContainer);
 
-    let assetsTableTr = document.createElement("tr");
-    assetsTableTr.classList.add("theadtr");
-    theadTable.appendChild(assetsTableTr);
-
-  function renderTheadTd(assetsTitle){
-
-     let headTd = document.createElement("th");
-     headTd.classList.add("theadth");
-     assetsTableTr.appendChild(headTd);
-     headTd.textContent= assetsTitle;
-
-
-}
-   title.forEach(renderTheadTd);
-    
-
-
-   let tbodyTable = document.createElement("tbody");
-   tbodyTable.classList.add ("tbodyClass");
-   assetsTable.appendChild(tbodyTable);
-
-   function tableTrTd(tdRank ,symbol, imglogo , tdName , tdPrice , tdMarket ,tdVWAP ,tdSupply ,tdVolume  , tdChange){
-    let assetsTbodyTableTr = document.createElement("tr");
-    assetsTbodyTableTr.classList.add("tbodytr");
-    tbodyTable.appendChild(assetsTbodyTableTr);
-
-    let TbodyTdRank = document.createElement("td");
-    TbodyTdRank.classList.add("Tbodytd2");
-    assetsTbodyTableTr.appendChild(TbodyTdRank);
-    TbodyTdRank.textContent=tdRank + "  ";
-
-    let TbodyTdName = document.createElement("td");
-    TbodyTdName.classList.add("Tbodytd1");
-    assetsTbodyTableTr.appendChild(TbodyTdName);
-    let tbodyTdimg = document.createElement("img");
-    tbodyTdimg.classList.add("tdimg");
-    TbodyTdName.appendChild(tbodyTdimg);
-    tbodyTdimg.src=imglogo;
-
-    let tbodytdname2 = document.createElement("a");
-    tbodytdname2.classList.add("tbodyname2");
-    TbodyTdName.appendChild(tbodytdname2);
-
-    let tbodyname3 = document.createElement("p");
-    tbodyname3.classList.add("smallname");
-    tbodytdname2.appendChild(tbodyname3);
-    tbodyname3.textContent=tdName;
-
-    let tbodyname4 = document.createElement("p");
-    tbodyname4.classList.add("smallname2");
-    tbodytdname2.appendChild(tbodyname4);
-    tbodyname4.textContent=symbol;
-
-
-    function formatNumber(num) {
-      if (num >= 1e12) {
-       return (num / 1e12).toFixed(2) + "t" ;}
-        else if (num >= 1e9) { return (num / 1e9).toFixed(2) + "b"; 
-      } else if (num >= 1e6) {
-        return (num / 1e6).toFixed(2) + "m";
-      }
-      else{return num.toFixed(2)}
-      
-    }
-    function formatNumber2(num) {
-      if (num >= 1e12) {
-        return (num / 1e12).toFixed(2) + "t" ;}
-         else if (num >= 1e9) { return (num / 1e9).toFixed(2) + "b"; 
-       } else if (num >= 1e6) {
-         return (num / 1e6).toFixed(2) + "m";
-       } else if (num>= 1e3){
-        return(num / 1e3).toFixed(2) + "k";
-       }
-       else{return num.toFixed(2)}
-    }
-
-    let TbodyTdPrice = document.createElement("td");
-    TbodyTdPrice.classList.add("Tbodytd");
-    assetsTbodyTableTr.appendChild(TbodyTdPrice);
-    TbodyTdPrice.textContent=numeral(tdPrice).format("($0,0.00)");
-
-    let TbodyTdMarket = document.createElement("td");
-    TbodyTdMarket.classList.add("Tbodytd");
-    assetsTbodyTableTr.appendChild(TbodyTdMarket);
-    TbodyTdMarket.textContent="$"+formatNumber( Number.parseFloat(tdMarket));
-
-
-    let TbodyTdVWAP = document.createElement("td");
-    TbodyTdVWAP.classList.add("Tbodytd");
-    assetsTbodyTableTr.appendChild(TbodyTdVWAP);
-    TbodyTdVWAP.textContent=numeral(tdVWAP).format("($0,0.00)");
-
-    let TbodyTdSupply = document.createElement("td"); 
-    TbodyTdSupply.classList.add("Tbodytd");
-    assetsTbodyTableTr.appendChild(TbodyTdSupply);
-    TbodyTdSupply.textContent= formatNumber2 (Number.parseFloat(tdSupply));
-
-    let TbodyTdVolume = document.createElement("td");
-    TbodyTdVolume.classList.add("Tbodytd");
-    assetsTbodyTableTr.appendChild(TbodyTdVolume);
-    TbodyTdVolume.textContent="$"+ formatNumber2 (Number.parseFloat(tdVolume));
-
-
-    let TbodyTdChange = document.createElement("td");
-    
-    assetsTbodyTableTr.appendChild(TbodyTdChange );
-    if (tdChange<0){
-      TbodyTdChange .classList.add("Tbodytd4");
-    }else {
-      TbodyTdChange .classList.add("Tbodytd5");
-    }
-    TbodyTdChange .textContent= (Number.parseFloat(tdChange).toFixed(2)) +"%";
-  }
-
-  
-  async function renderTbodyTrTd(list){
-    let listofTrTd = await getAssetslist();
-  for (let i=0 ; i<list ; i++){
-    let itemofTrTd = listofTrTd[i];
-    let lowercasedSymbol = (itemofTrTd.symbol).toLowerCase();
-    let renderimg = "https://assets.coincap.io/assets/icons/"+ lowercasedSymbol+ "@2x.png";
-     tableTrTd(itemofTrTd.rank ,itemofTrTd.symbol, renderimg , itemofTrTd.name , itemofTrTd.priceUsd , itemofTrTd.marketCapUsd ,itemofTrTd.vwap24Hr , itemofTrTd.supply , itemofTrTd.volumeUsd24Hr , itemofTrTd.changePercent24Hr);
-  }
-
-  
-  };
-  renderTbodyTrTd(20);
-  
-  // حالا بخش دکمه رو ایجاد میکنیم//
-
-  function renderbtn(){
-    let btncontainer = document.querySelector(".btn");
-    let creatBtn = document.createElement("button");
-    creatBtn.classList.add("btnclass");
-    creatBtn.textContent="View More";
-   btncontainer.appendChild(creatBtn);
-  creatBtn.addEventListener("click" , function () {
-    currentOffset += 20;
-    limit=20;
-    renderTbodyTrTd(20) ;
-  
-  });
-
-
-  }
- 
-  renderbtn();
+  let assetsTable = document.createElement("table");
+  assetsTable.classList.add("assetstable");
+  assetsTableContainer.appendChild(assetsTable);
 
 }
 
+renderTableassets()
 
-renderAssetsList();
+let assetsTable = document.querySelector(".assetstable");
+
+function renderTableTheadAssets(){
+  let theadTable = document.createElement("thead");
+  theadTable.classList.add ("theadassetstable");
+  assetsTable.appendChild(theadTable);
+
+  let assetsTableTr = document.createElement("tr");
+  assetsTableTr.classList.add("theadtr");
+  theadTable.appendChild(assetsTableTr);
+
+function renderTheadTd(assetsTitle){
+
+   let headTd = document.createElement("th");
+   headTd.classList.add("theadth");
+   assetsTableTr.appendChild(headTd);
+   headTd.textContent= assetsTitle;
+
+
+}
+ title.forEach(renderTheadTd);
+};
+
+renderTableTheadAssets();
+
+//part3//
+
+function renderTableTbodyAssets(){
+  let tbodyTable = document.createElement("tbody");
+  tbodyTable.classList.add ("tbodyClass");
+  assetsTable.appendChild(tbodyTable);
+}
+
+renderTableTbodyAssets();
+
+let tbodyTable = document.querySelector(".tbodyClass");
+
+function tbodyinfoassets(data){
+
+  let assetsTbodyTableTr = document.createElement("tr");
+  assetsTbodyTableTr.classList.add("tbodytr");
+  tbodyTable.appendChild(assetsTbodyTableTr);
+
+  let TbodyTdRank = document.createElement("td");
+  TbodyTdRank.classList.add("Tbodytd2");
+  assetsTbodyTableTr.appendChild(TbodyTdRank);
+  TbodyTdRank.textContent=data.rank + "  ";
+
+  let TbodyTdName = document.createElement("td");
+  TbodyTdName.classList.add("Tbodytd1");
+  assetsTbodyTableTr.appendChild(TbodyTdName);
+  let tbodyTdimg = document.createElement("img");
+  tbodyTdimg.classList.add("tdimg");
+  TbodyTdName.appendChild(tbodyTdimg);
+  let lowercasedSymbol = (data.symbol).toLowerCase();
+  let imglogo = "https://assets.coincap.io/assets/icons/"+ lowercasedSymbol+ "@2x.png";
+  tbodyTdimg.src=imglogo;
+
+  let tbodytdname2 = document.createElement("a");
+  tbodytdname2.classList.add("tbodyname2");
+  TbodyTdName.appendChild(tbodytdname2);
+
+  let tbodyname3 = document.createElement("p");
+  tbodyname3.classList.add("smallname");
+  tbodytdname2.appendChild(tbodyname3);
+  tbodyname3.textContent=data.name;
+
+  let tbodyname4 = document.createElement("p");
+  tbodyname4.classList.add("smallname2");
+  tbodytdname2.appendChild(tbodyname4);
+  tbodyname4.textContent=data.symbol;
+
+  function formatNumber(num) {
+    if (num >= 1e12) {
+     return (num / 1e12).toFixed(2) + "t" ;}
+      else if (num >= 1e9) { return (num / 1e9).toFixed(2) + "b"; 
+    } else if (num >= 1e6) {
+      return (num / 1e6).toFixed(2) + "m";
+    }
+    else{return num.toFixed(2)}
+    
+  }
+  function formatNumber2(num) {
+    if (num >= 1e12) {
+      return (num / 1e12).toFixed(2) + "t" ;}
+       else if (num >= 1e9) { return (num / 1e9).toFixed(2) + "b"; 
+     } else if (num >= 1e6) {
+       return (num / 1e6).toFixed(2) + "m";
+     } else if (num>= 1e3){
+      return(num / 1e3).toFixed(2) + "k";
+     }
+     else{return num.toFixed(2)}
+  }
+
+  let TbodyTdPrice = document.createElement("td");
+  TbodyTdPrice.classList.add("Tbodytd");
+  assetsTbodyTableTr.appendChild(TbodyTdPrice);
+  TbodyTdPrice.textContent=numeral(data.priceUsd ).format("($0,0.00)");
+
+  let TbodyTdMarket = document.createElement("td");
+  TbodyTdMarket.classList.add("Tbodytd");
+  assetsTbodyTableTr.appendChild(TbodyTdMarket);
+  TbodyTdMarket.textContent="$"+formatNumber( Number.parseFloat(data.marketCapUsd));
+
+
+  let TbodyTdVWAP = document.createElement("td");
+  TbodyTdVWAP.classList.add("Tbodytd");
+  assetsTbodyTableTr.appendChild(TbodyTdVWAP);
+  TbodyTdVWAP.textContent=numeral(data.vwap24Hr).format("($0,0.00)");
+
+  let TbodyTdSupply = document.createElement("td"); 
+  TbodyTdSupply.classList.add("Tbodytd");
+  assetsTbodyTableTr.appendChild(TbodyTdSupply);
+  TbodyTdSupply.textContent= formatNumber2 (Number.parseFloat(data.supply));
+
+  let TbodyTdVolume = document.createElement("td");
+  TbodyTdVolume.classList.add("Tbodytd");
+  assetsTbodyTableTr.appendChild(TbodyTdVolume);
+  TbodyTdVolume.textContent="$"+ formatNumber2 (Number.parseFloat(data.volumeUsd24Hr ));
+
+
+  let TbodyTdChange = document.createElement("td");
+  
+  assetsTbodyTableTr.appendChild(TbodyTdChange );
+  if (data.changePercent24Hr<0){
+    TbodyTdChange .classList.add("Tbodytd4");
+  }else {
+    TbodyTdChange .classList.add("Tbodytd5");
+  }
+  TbodyTdChange .textContent= (Number.parseFloat(data.changePercent24Hr).toFixed(2)) +"%";
+}
+
+//error//
+
+function renderError(msg){
+  let errorcontainer = document.createElement("tr");
+  errorcontainer.classList.add("tbodytr");
+  tbodyTable.appendChild(errorcontainer);
+
+
+  let tderror = document.createElement("td");
+  tderror.classList.add("error");
+  tderror.setAttribute("colspan","8"); 
+  tderror.textContent=msg;
+  errorcontainer.appendChild(tderror);
+
+}
+
+//loading//
+
+function renderloading(){
+  let loadingcontainer = document.createElement("tr");
+  loadingcontainer.classList.add("tbodytr2");
+  tbodyTable.appendChild(loadingcontainer);
+
+
+  let tdloading = document.createElement("td");
+  tdloading.classList.add("loading");
+  tdloading.setAttribute("colspan","8"); 
+  tdloading.textContent= "loading...";
+  loadingcontainer.appendChild(tdloading);
+}
+
+
+
+function removeloading(){
+  let loadingEl = document.querySelector(".tbodytr2");
+  tbodyTable.removeChild(loadingEl);
+}
+
+
+//fetch//
+
+let currentOffset = 0 ;
+let limit = 20 ;
+
+async function getAssetslist(){
+ let baseUrl = "https://api.coincap.io/v2";
+ let assetsUrl = baseUrl + "/assets?offset="+ currentOffset + "&limit=" + limit;
+   let response = await fetch(assetsUrl);
+   let body = await response.json();
+
+   return body.data;
+}
+
+
+//run//
+
+async function renderTbodyTrTd(){
+  let listofTrTd = await getAssetslist();
+listofTrTd.forEach( function(item){
+  tbodyinfoassets(item);
+})
+}
+
+renderloading();
+renderTbodyTrTd().catch(function(error){
+  renderError("There is a problem...");
+}).finally(function(){
+  removeloading();
+})
+
+
+  //BTN//
+
+function renderbtn(){
+  let btncontainer = document.querySelector(".btn");
+  let creatBtn = document.createElement("button");
+  creatBtn.classList.add("btnclass");
+  creatBtn.textContent="View More";
+ btncontainer.appendChild(creatBtn);
+creatBtn.addEventListener("click" , function () {
+  currentOffset += 20;
+  limit=20;
+  renderTbodyTrTd() ;
+
+});
+
+}
+
+renderbtn();
+
 
 
 

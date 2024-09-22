@@ -64,7 +64,22 @@ let info =[
 
 let titleExchangestable=[ "Rank", "Name " , "Trading Pairs" , " Top Pair", "Volume(24Hr)" , "Total(%)" , "Status"];
 
-let container= document.querySelector(".exchangestable");
+
+let containermain= document.querySelector(".exchangesList");
+
+ function renderTAble(){
+let containerTable =  document.createElement("div");
+containerTable.classList.add("container-table");
+containermain.appendChild(containerTable);
+
+let exchangesTable = document.createElement("table");
+exchangesTable.classList.add("exchangestable");
+containerTable.appendChild(exchangesTable);
+ }
+
+ renderTAble();
+
+ let container = document.querySelector(".exchangestable")
 
 function renderTableTheadExchanges(){
 let theadexchangestable = document.createElement("thead");
@@ -76,6 +91,7 @@ theadTr.classList.add("theadtr");
 theadexchangestable.appendChild(theadTr);
 
 function rendertd (exchangestitle){
+  
 let theadTd = document.createElement("th");
 theadTd.classList.add("theadth");
 theadTd.textContent = exchangestitle;
