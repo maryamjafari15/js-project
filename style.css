@@ -44,14 +44,22 @@
     align-items: center;
     
 }
- .leftside-nav div , .rightside-nav div{
+ .leftside-nav> div {
     align-content: center;
   height: 60px;  
   padding: 13px 16px;
-
+  cursor: pointer;
 }
-.leftside-nav div:hover , .rightside-nav div:hover{
+
+.rightside-nav> div{
+    align-content: center;
+    height: 60px;  
+    padding: 13px 16px;  
+}
+
+.leftside-nav>div:hover , .rightside-nav> div:hover{
     background-color: rgba(0, 0, 0, .03);
+    
 }
 
 .menu-list {
@@ -62,6 +70,7 @@
     font-weight: 400;
     font-size: 1rem;
     color: rgba(0, 0, 0, .87);
+    
 }
 .logo-cont:hover{
     background-color: rgba(0, 0, 0, .03);
@@ -71,6 +80,17 @@
     cursor: pointer;
     margin: 13px 16px;
 }
+.search{
+    position: relative;
+}
+.searchinput{
+    width:200px;
+    transition: width 0.3s, adding 0.3s;
+     background: transparent; 
+    color: rgba(0, 0, 0, 0.9);
+}
+
+
 /* footer */
 
 footer{
@@ -212,12 +232,19 @@ body{
     line-height:1.5em;
 }
 
-.tbodytr , .tbodytr2{
+.tbodytr {
     display: table-row;
     text-align: center;
     width: 100%;
     cursor: pointer;
+    transition: .25s;
 }
+.tbodytr:hover{
+    background-color: rgba(0, 0, 0, .05);
+}
+
+
+
 
 .Tbodytd , .Tbodytd4 , .Tbodytd5{
     font-size: .9em;
@@ -342,3 +369,175 @@ body{
     display: inline-block;
     margin-left: 25px;
   }
+
+
+/* setting */
+
+  .modalsetting{
+    display: none;
+    background-color: rgba(0, 0, 0, .8);
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    z-index: 10000;
+  }
+
+  .opensetting{
+    display:flex ;
+    
+  }
+  .setting-container{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    margin: 5vh auto;
+    width: 380px;
+
+  }
+  .setting-part1{
+justify-content: space-between;
+    display: flex;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .setting-part2{
+    justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        color: #fff;
+        font-size: .9em;
+        font-weight: 600;
+        width: 100%;
+        justify-content: start;
+      }
+
+      .setting-part2>div{
+        text-align: start;
+        padding: 20px;
+      }
+  .body-locked{
+
+overflow: hidden;
+  }
+  /* contact */
+
+  .Contact{
+    display: none;
+    background-color: rgba(0, 0, 0, .8);
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    z-index: 10000;
+  }
+  .opencontact{
+    display: flex;
+  }
+
+  .contactcontainer{
+    background-color: #fff;
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+    padding: 48px;
+    border-radius: 20px;
+    color: black;
+  }
+
+  .header-contact{
+   font-size: 32px;
+   line-height: 48px;
+   font-weight: 500;
+   color: rgb(0, 0,0);
+  }
+  .part1-contact{
+display: flex;
+flex-direction: column;
+align-items: start;
+justify-content: start;
+gap: 16px;
+margin-bottom: 24px;
+
+  }
+  .p-contact{
+    text-align: start;
+    align-self: stretch;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.2px;
+    color: rgb(113, 113, 122);
+  }
+.line{
+    height: 1px;
+    border: 1px solid rgb(228, 228, 231);
+    margin-bottom: 24px;
+}
+.form1{
+    display: block;
+    font-size: 1rem;
+    position: relative;
+    max-width: 100%;
+}
+.formcontact{
+    margin: 0 0 1em;
+display: flex;
+flex-direction: column;
+align-items: start;
+}
+.formcontact label{
+    font-size: 16px;
+    font-family: Lato;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(113, 113, 122);
+}
+
+.formcontact input , #textarea1{
+    width: 100%;
+    padding: 16px 12px;
+    background: rgb(244, 244, 245);
+    border-radius: 12px;
+    border: 1px solid rgb(212, 212, 216);
+    box-shadow: rgb(212, 212, 216) 0px 3px 0px;
+    color: black;
+}
+#textarea1{
+    resize: none;
+}
+
+.contact-button{
+    border-width: 0px;
+    width: auto;
+    padding: 16px 24px;
+    background: rgb(161, 161, 170);
+    border-radius: 50px;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.32px;
+    display: block;
+    margin: 0px auto;
+}
+

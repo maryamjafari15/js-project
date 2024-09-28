@@ -254,7 +254,7 @@ function removeloading(){
 
 //fetch//
 
-let currentOffset = 0 ;
+let currentOffset = 0;
 let limit = 20 ;
 
 async function getAssetslist(){

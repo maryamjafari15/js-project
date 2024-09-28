@@ -199,7 +199,7 @@ let exchangesTbodyTableTr = document.createElement("tr");
 
   function renderloading(){
     let loadingcontainer = document.createElement("tr");
-    loadingcontainer.classList.add("tbodytr2");
+    loadingcontainer.classList.add("tbodytr");
     tbodyexchangesTable.appendChild(loadingcontainer);
  
 
@@ -213,7 +213,7 @@ let exchangesTbodyTableTr = document.createElement("tr");
 
  
   function removeloading(){
-    let loadingEl = document.querySelector(".tbodytr2");
+    let loadingEl = document.querySelector(".tbodytr");
     tbodyexchangesTable.removeChild(loadingEl);
   }
   

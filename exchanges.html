@@ -47,25 +47,48 @@
         </div>
         <div class="rightside-nav">
           <div>
-            <a href="#" class="menu-list">USD</a>
+            <a href="#" class="menu-list" style="cursor: text">USD</a>
           </div>
           <div>
-            <a href="#" class="menu-list">English</a>
+            <a href="#" class="menu-list" style="cursor: text">English</a>
           </div>
           <div>
-            <img src="./assets/search.svg" alt="search" />
+            <div class="search">
+              <!-- <input type="text" class="searchinput"/> -->
+              <img
+                src="./assets/search.svg"
+                alt="search"
+                style="cursor: text"
+              />
+            </div>
           </div>
-          <div>
+          <div style="cursor: pointer" class="setting">
             <img src="./assets/setting.svg" alt="setting" />
           </div>
         </div>
       </div>
     </nav>
+    <div  id="setting"  class="modalsetting ">
+      <div class="setting-container">
+        <div class="setting-part1">
+       
+        <div style="display: flex ; ">
+          <img src="./assets/setting-gears-svgrepo-com.svg" style="padding-right: 10px;">
+          <div class="content">Setting</div>
+        </div>
+        <img src="./assets/cancel2-svgrepo-com.svg" class="removesetting">
+      </div>
+        <div class="setting-part2">
+          <div>Dark Theme</div>
+          <div>Flash Price Indicators</div>
+          <div>USD</div>
+          <div>English</div>
+        </div>
+      </div>
+    </div>
     <main>
       <div class="section1"></div>
-      <div class="exchangesList">
-      
-      </div>
+      <div class="exchangesList"></div>
       <div class="btn"></div>
     </main>
 
@@ -125,7 +148,7 @@
         </div>
       </div>
     </footer>
-   
+    <script src="./setting.js"> </script>
     <script src="./exchanges.js"></script>
   </body>
 </html>
