@@ -7,3 +7,4 @@ contactopen.classList.add("opencontact");
 
 const contactbtn = document.querySelector("#contactbtn");
 contactbtn.addEventListener("click",renderContact);
+

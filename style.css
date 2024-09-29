@@ -4,6 +4,9 @@
     margin: 0;
     padding: 0;
 }
+body{
+    overflow-x:hidden;
+}
 /* banner*/
 .header-banner{
     display: flex;
@@ -102,7 +105,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: start;
-width: 1127px;
+max-width: 1127px;
 margin: auto;
 }
 .footer-section{
@@ -540,4 +543,56 @@ align-items: start;
     display: block;
     margin: 0px auto;
 }
+
+
+
+
+
+
+@media only screen and (min-width: 990px) and (max-width: 1200px){
+    .res-class{
+   width: calc(933px + 2rem)!important;
+}
+  }
+
+  @media only screen and (min-width: 800px) and (max-width: 990px){
+    .thead-remove , .remove-col{
+        display: none;
+    }
+
+    .res2{
+        width: calc(768px + 2rem )!important;
+    }
+    .res3{
+        width: calc(768px - 2rem )!important;
+        flex-wrap: wrap!important;
+        max-width: 100%!important;
+    }
+    
+    
+    }
+
+@media screen and (max-width:800px) {
+
+    .leftside-nav , .rightside-nav{
+        display: none!important;
+        
+    }
+    .navigation-bar{
+        justify-content: center!important;
+    }
+.mainsection2{
+    display: none;
+}
+.res-class{
+width: 100%;
+}
+ .thead-remove , .remove-col{
+        display: none;
+    }
+    .res-class3{
+        display: none;
+    }
+}
+
 

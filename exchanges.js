@@ -38,6 +38,8 @@ let info =[
   
     let mainSection2 = document.createElement("div");
     mainSection2.classList.add("mainsection2");
+    mainSection2.classList.add("res-class");
+    mainSection2.classList.add("res3");
     mainSection1.appendChild(mainSection2);
   
   function renderBaseInfo(infoItem){
@@ -88,6 +90,7 @@ container.appendChild(theadexchangestable);
 
 let theadTr = document.createElement("tr");
 theadTr.classList.add("theadtr");
+theadTr.classList.add("thead-remove");
 theadexchangestable.appendChild(theadTr);
 
 function rendertd (exchangestitle){
@@ -133,11 +136,13 @@ let exchangesTbodyTableTr = document.createElement("tr");
     
     let TbodyTdTrading = document.createElement("td");
     TbodyTdTrading.classList.add("Tbodytd");
+    TbodyTdTrading.classList.add("res-class3");
     exchangesTbodyTableTr.appendChild(TbodyTdTrading);
     TbodyTdTrading.textContent=data.tradingPairs;
 
     let TbodyTdtopPair = document.createElement("td");
     TbodyTdtopPair .classList.add("Tbodytd");
+    TbodyTdtopPair .classList.add("res-class3");
     exchangesTbodyTableTr.appendChild(TbodyTdtopPair );
     TbodyTdtopPair .textContent="USDT";
 
@@ -152,6 +157,7 @@ let exchangesTbodyTableTr = document.createElement("tr");
    
     let TbodyTdTotal = document.createElement("td");
     TbodyTdTotal.classList.add("Tbodytd");
+    TbodyTdTotal.classList.add("res-class3");
     exchangesTbodyTableTr.appendChild(TbodyTdTotal );
 
     if(data.percentTotalVolume<0.00000001){
@@ -162,6 +168,7 @@ let exchangesTbodyTableTr = document.createElement("tr");
     let TbodyTdStatus= document.createElement("td");
     exchangesTbodyTableTr.appendChild(TbodyTdStatus );
     TbodyTdStatus.classList.add( "Tbodytd" );
+    TbodyTdStatus.classList.add( "remove-col" );
     TbodyTdStatus .textContent=" ";
 
     let TbodyTdStatus2= document.createElement("div");

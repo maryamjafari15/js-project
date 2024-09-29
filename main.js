@@ -38,6 +38,8 @@ function renderInfo(){
 
   let mainSection2 = document.createElement("div");
   mainSection2.classList.add("mainsection2");
+  mainSection2.classList.add("res-class");
+  mainSection2.classList.add("res3");
   mainSection1.appendChild(mainSection2);
 
 function renderBaseInfo(infoItem){
@@ -90,6 +92,7 @@ function renderTableTheadAssets(){
 
   let assetsTableTr = document.createElement("tr");
   assetsTableTr.classList.add("theadtr");
+  assetsTableTr.classList.add("thead-remove");
   theadTable.appendChild(assetsTableTr);
 
 function renderTheadTd(assetsTitle){
@@ -101,10 +104,14 @@ function renderTheadTd(assetsTitle){
 
 
 }
- title.forEach(renderTheadTd);
-};
+
+
+title.forEach(renderTheadTd);
+}
 
 renderTableTheadAssets();
+
+
 
 //part3//
 
@@ -177,22 +184,26 @@ function tbodyinfoassets(data){
 
   let TbodyTdPrice = document.createElement("td");
   TbodyTdPrice.classList.add("Tbodytd");
+  TbodyTdPrice.classList.add("res-class3");
   assetsTbodyTableTr.appendChild(TbodyTdPrice);
   TbodyTdPrice.textContent=numeral(data.priceUsd ).format("($0,0.00)");
 
   let TbodyTdMarket = document.createElement("td");
   TbodyTdMarket.classList.add("Tbodytd");
+  TbodyTdMarket.classList.add("res-class3");
   assetsTbodyTableTr.appendChild(TbodyTdMarket);
   TbodyTdMarket.textContent="$"+formatNumber( Number.parseFloat(data.marketCapUsd));
 
 
   let TbodyTdVWAP = document.createElement("td");
   TbodyTdVWAP.classList.add("Tbodytd");
+  TbodyTdVWAP.classList.add("remove-col");
   assetsTbodyTableTr.appendChild(TbodyTdVWAP);
   TbodyTdVWAP.textContent=numeral(data.vwap24Hr).format("($0,0.00)");
 
   let TbodyTdSupply = document.createElement("td"); 
   TbodyTdSupply.classList.add("Tbodytd");
+  TbodyTdSupply.classList.add("remove-col");
   assetsTbodyTableTr.appendChild(TbodyTdSupply);
   TbodyTdSupply.textContent= formatNumber2 (Number.parseFloat(data.supply));
 
