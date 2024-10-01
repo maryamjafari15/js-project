@@ -1,8 +1,7 @@
 //dom//
 let settingbtn = document.querySelector(".setting");
-
-function rendersetting(){
 let settingopen = document.querySelector("#setting");
+function rendersetting(){
 settingopen.classList.add("opensetting");
   let body = document.querySelector("body");
   body.classList.add("body-locked") ; 
@@ -20,3 +19,10 @@ let closesetting = document.querySelector(".removesetting");
 
 closesetting.addEventListener("click", removesetting );
 
+//new
+
+settingopen.addEventListener("click" , (event) => {
+  if( event.target == settingopen){
+    removesetting();
+  }
+})

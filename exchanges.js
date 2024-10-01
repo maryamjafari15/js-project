@@ -246,13 +246,20 @@ let exchangesTbodyTableTr = document.createElement("tr");
   }
   
   //run //
+  let startIndex= 0;
+  const itemsperpage = 20;
+
   async function renderExchangeslist(){
     let list = await getExchangeslist();
    let listsorted = list.sort((a, b) => a.rank - b.rank);
-    listsorted.forEach( function(item){
+    
+   let selectedItem = listsorted.slice(startIndex , startIndex + itemsperpage);
+
+    selectedItem.forEach( function(item){
       tbodytrexchanges(item);
     })
     
+    startIndex += itemsperpage ;
   }
 
   
@@ -267,11 +274,16 @@ let exchangesTbodyTableTr = document.createElement("tr");
 
   //BTN//
 
-  // function renderExchangesbtn(){
-  //   let btncontainer = document.querySelector(".btn");
-  //   let creatBtn = document.createElement("button");
-  //   creatBtn.classList.add("btnclass");
-  //   creatBtn.textContent="View More";
-  //  btncontainer.appendChild(creatBtn);
-  // }
+  function renderExchangesbtn(){
+    let btncontainer = document.querySelector(".btn");
+    let creatBtn = document.createElement("button");
+    creatBtn.classList.add("btnclass");
+    creatBtn.textContent="View More";
+   btncontainer.appendChild(creatBtn);
+   creatBtn.addEventListener("click",
+    renderExchangeslist
+   )
+  }
+  renderExchangesbtn();
+
   
