@@ -148,6 +148,7 @@ function tbodyinfoassets(data){
 
   let tbodytdname2 = document.createElement("a");
   tbodytdname2.classList.add("tbodyname2");
+  tbodytdname2.href= ` /assets.html?coin=${data.id}`;
   TbodyTdName.appendChild(tbodytdname2);
 
   let tbodyname3 = document.createElement("p");
