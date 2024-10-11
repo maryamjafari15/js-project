@@ -67,3 +67,22 @@
     align-items: stretch;
     padding: 40px;
 }
+
+@media screen and (max-width:800px) { 
+
+    .container2{
+        display: flex;
+        flex-direction: column;
+justify-content: center;
+align-items: center;
+    
+    }
+.mainsection1-left , .mainsection1-right {
+    margin: 0%;
+    width: 100%;
+    padding-bottom: 30px;
+}
+ .part2{
+    gap: 30px;
+ }  
+}

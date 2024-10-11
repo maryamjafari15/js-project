@@ -14,5 +14,5 @@ const id = searchparams.get("coin");
 getAssets(id);
 
 
-//dom//
+
 
