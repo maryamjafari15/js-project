@@ -26,4 +26,4 @@ This is a **pure JavaScript project** designed as a practice exercise to showcas
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://https://github.com/maryamjafari15/js-project.git
+   git clone https://github.com/maryamjafari15/js-project.git
