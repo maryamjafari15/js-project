@@ -1,5 +1,7 @@
 # js project - CoinCap Clone
-This is a **pure JavaScript project** designed as a practice exercise to showcase my JavaScript, HTML, and CSS skills. The project replicates some of the functionality of [CoinCap.io](https://www.coincap.io/) to provide real-time cryptocurrency market data.
+
+---
+- This is a **pure JavaScript project** designed as a practice exercise to showcase my JavaScript, HTML, and CSS skills. The project replicates some of the functionality of [CoinCap.io](https://www.coincap.io/) to provide real-time cryptocurrency market data.
 ---
 ## 📌 Features
 - Fetching **live cryptocurrency data** using the CoinCap API.
